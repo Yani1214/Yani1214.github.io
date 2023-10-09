@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="立志成为一名拯救世界的技术宅！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Murphy_42&#39;s BLOG">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="专题2 跨站脚本攻击">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XSS">
+<meta property="og:url" content="http://example.com/2023/10/09/XSS/index.html">
 <meta property="og:site_name" content="Murphy_42&#39;s BLOG">
-<meta property="og:description" content="立志成为一名拯救世界的技术宅！">
+<meta property="og:description" content="专题2 跨站脚本攻击">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-09T11:21:24.000Z">
+<meta property="article:modified_time" content="2023-10-09T11:48:13.401Z">
 <meta property="article:author" content="Murphy_42">
+<meta property="article:tag" content="XSS">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/archives/">
+<link rel="canonical" href="http://example.com/2023/10/09/XSS/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | Murphy_42's BLOG</title>
+  <title>XSS | Murphy_42's BLOG</title>
   
 
 
@@ -157,213 +160,120 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 9 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/09/XSS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Head.jpg">
+      <meta itemprop="name" content="Murphy_42">
+      <meta itemprop="description" content="立志成为一名拯救世界的技术宅！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Murphy_42's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          XSS
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-10-09 19:21:24 / 修改时间：19:48:13" itemprop="dateCreated datePublished" datetime="2023-10-09T19:21:24+08:00">2023-10-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">网络空间安全数据挖掘技术</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%8A%80%E6%9C%AF/XSS%E6%94%BB%E5%87%BB/" itemprop="url" rel="index"><span itemprop="name">XSS攻击</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2023</span>
-    </div>
+        <p>专题2 跨站脚本攻击</p>
+<span id="more"></span>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-10-09T19:21:24+08:00"
-              content="2023-10-09">
-          10-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/10/09/XSS/" itemprop="url">
-            <span itemprop="name">XSS</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-10-09T01:08:50+08:00"
-              content="2023-10-09">
-          10-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/10/09/%E5%85%B3%E4%BA%8E%E9%85%8D%E7%BD%AEtensorflow/" itemprop="url">
-            <span itemprop="name">关于配置tensorflow</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-08-02T00:33:45+08:00"
-              content="2023-08-02">
-          08-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/08/02/%E5%85%B3%E4%BA%8Ehexo%E7%9A%84%E5%91%BD%E4%BB%A4/" itemprop="url">
-            <span itemprop="name">关于hexo的命令</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-03-05T21:05:12+08:00"
-              content="2023-03-05">
-          03-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/03/05/%E5%85%B3%E4%BA%8Elive2d%E7%9C%8B%E6%9D%BF%E5%A8%98/" itemprop="url">
-            <span itemprop="name">关于live2d看板娘</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-13T16:06:56+08:00"
-              content="2022-10-13">
-          10-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/13/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8II/" itemprop="url">
-            <span itemprop="name">反转链表II</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-10-09T14:23:32+08:00"
-              content="2022-10-09">
-          10-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/10/09/%E7%BC%96%E8%AF%91%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84RE%E9%97%AE%E9%A2%98/" itemprop="url">
-            <span itemprop="name">编译中遇到的RE问题</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-09-12T23:01:09+08:00"
-              content="2022-09-12">
-          09-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/09/12/%E5%85%B3%E4%BA%8E%E7%9F%B3%E5%A4%B4%E9%97%A8%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url">
-            <span itemprop="name">关于石头门（二）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-24T17:24:07+08:00"
-              content="2022-08-24">
-          08-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/24/%E5%85%B3%E4%BA%8E%E7%9F%B3%E5%A4%B4%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">
-            <span itemprop="name">关于石头门（一）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-22T14:45:22+08:00"
-              content="2022-08-22">
-          08-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/22/%E5%80%BC%E5%BE%97%E7%BA%AA%E5%BF%B5%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8D%9A%E5%AE%A2/" itemprop="url">
-            <span itemprop="name">值得纪念的第一次博客</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+<h3 id="XSS基本原理"><a href="#XSS基本原理" class="headerlink" title="XSS基本原理"></a>XSS基本原理</h3><p>恶意代码提交给服务器-&gt;服务器不处理直接传回web</p>
+<h3 id="XSS类型"><a href="#XSS类型" class="headerlink" title="XSS类型"></a>XSS类型</h3><blockquote>
+<p>代码和数据没有分开 合在了一起 从而容易发生XSS攻击</p>
+<p>因此需要代码和数据分离</p>
+</blockquote>
+<ul>
+<li>反射型：输入到web的内容最终会返回到页面中，与恶意url相关，转成短链接地址进行引诱点击</li>
+<li>存储型：论坛等平台中</li>
+</ul>
+<h3 id="XSS危害"><a href="#XSS危害" class="headerlink" title="XSS危害"></a>XSS危害</h3><ul>
+<li>窃取Cookie，非法获取用户权限</li>
+<li>通过flash，强迫下载恶意软件</li>
+<li>Drive-by-download网马攻击，远程植入木马</li>
+</ul>
+<h3 id="拓展：安全实验靶场"><a href="#拓展：安全实验靶场" class="headerlink" title="拓展：安全实验靶场"></a>拓展：安全实验靶场</h3><blockquote>
+<p>基于Web应用的靶场<code>DVWA</code></p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/digininja/DVWA">GitHub - digininja&#x2F;DVWA: Damn Vulnerable Web Application (DVWA)</a></p>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/XSS/" rel="tag"># XSS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/10/09/%E5%85%B3%E4%BA%8E%E9%85%8D%E7%BD%AEtensorflow/" rel="prev" title="关于配置tensorflow">
+      <i class="fa fa-chevron-left"></i> 关于配置tensorflow
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -416,6 +326,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">XSS基本原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">XSS类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS%E5%8D%B1%E5%AE%B3"><span class="nav-number">3.</span> <span class="nav-text">XSS危害</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%93%E5%B1%95%EF%BC%9A%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C%E9%9D%B6%E5%9C%BA"><span class="nav-number">4.</span> <span class="nav-text">拓展：安全实验靶场</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
