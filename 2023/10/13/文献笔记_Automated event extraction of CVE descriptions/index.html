@@ -28,7 +28,7 @@
 <meta property="og:description" content="信安赛文献笔记——Automated event extraction of CVE descriptions">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-12T16:25:21.000Z">
-<meta property="article:modified_time" content="2023-10-13T10:09:03.968Z">
+<meta property="article:modified_time" content="2023-10-13T15:29:49.376Z">
 <meta property="article:author" content="Murphy_42">
 <meta property="article:tag" content="CVE">
 <meta name="twitter:card" content="summary">
@@ -191,7 +191,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-10-13 00:25:21 / 修改时间：18:09:03" itemprop="dateCreated datePublished" datetime="2023-10-13T00:25:21+08:00">2023-10-13</time>
+              <time title="创建时间：2023-10-13 00:25:21 / 修改时间：23:29:49" itemprop="dateCreated datePublished" datetime="2023-10-13T00:25:21+08:00">2023-10-13</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -300,7 +300,75 @@
 <li>通过BIOFR从CVE数据库中提取漏洞报告trigger</li>
 <li>通过BERT问答模型提取基于trigger的argument（需要根据trigger对argument的影响进行问题模板设计）</li>
 </ul>
-<h3 id="预备知识与动机-Preliminaries-amp-Motivation"><a href="#预备知识与动机-Preliminaries-amp-Motivation" class="headerlink" title="预备知识与动机 Preliminaries &amp; Motivation"></a>预备知识与动机 Preliminaries &amp; Motivation</h3>
+<h3 id="预备知识与动机-Preliminaries-amp-Motivation"><a href="#预备知识与动机-Preliminaries-amp-Motivation" class="headerlink" title="预备知识与动机 Preliminaries &amp; Motivation"></a>预备知识与动机 Preliminaries &amp; Motivation</h3><h6 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h6><ul>
+<li>漏洞实际上为一个<u>事件</u>，从而可以进行动态分析</li>
+<li>对event, trigger, argument进行了定义</li>
+</ul>
+<blockquote>
+<p>模型定义</p>
+</blockquote>
+<ul>
+<li>事件 VE：<em><strong>VE &#x3D; ⟨Cau, Att, Con, Ope, Loc, Ver⟩</strong></em><ul>
+<li><strong>Cau 原因 -&gt; trigger</strong></li>
+<li>Att 攻击者 -&gt; argument</li>
+<li>Con 后果 -&gt; argument</li>
+<li>Ope 操作 -&gt; argument</li>
+<li>Loc 位置 -&gt; argument</li>
+<li>Ver 版本 -&gt; argument</li>
+</ul>
+</li>
+</ul>
+<h6 id="预训练模型的预备知识"><a href="#预训练模型的预备知识" class="headerlink" title="预训练模型的预备知识"></a>预训练模型的预备知识</h6><ul>
+<li>BERT：预训练语言迷信，用于提取文本上下文信息，且适用于漏洞时间参数从漏洞中丢失的情况</li>
+<li>BiLSTM：LSTM变体，用于对文本上下文信息建模，并解决文本语义依赖问题</li>
+<li>FastText：词向量计算和文本分类工具，用于根据某个词的周围环境确定词的含义</li>
+</ul>
+<h6 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h6><ul>
+<li>大多数漏洞事件的表达形式和句法结构比较稳定，但是其trigger的长度、位置、结构都各不相同</li>
+<li>事件中trigger可以对argument产生一定影响，并能代表整个event</li>
+</ul>
+<h3 id="方法-Our-approach"><a href="#方法-Our-approach" class="headerlink" title="方法 Our approach"></a>方法 Our approach</h3><h6 id="image-20231013211512001-文献笔记-Automated-event-extraction-of-CVE-descriptions-assets-x2F-image-20231013211512001-png"><a href="#image-20231013211512001-文献笔记-Automated-event-extraction-of-CVE-descriptions-assets-x2F-image-20231013211512001-png" class="headerlink" title="![image-20231013211512001](文献笔记_Automated event extraction of CVE descriptions.assets&#x2F;image-20231013211512001.png)"></a>![image-20231013211512001](文献笔记_Automated event extraction of CVE descriptions.assets&#x2F;image-20231013211512001.png)</h6><blockquote>
+<p>输入：VE数据库中的文本漏洞描述</p>
+<p>输出：输出是从文本漏洞描述中抽取出的漏洞事件</p>
+<p>总思路：通过人工分析和BIOFR对文本漏洞中的漏洞事件trigger和argument进行标记，得到数据集；根据得到的trigger类型对BERT问答模型进行问题模板的构建，以便于进行argumet抽取</p>
+</blockquote>
+<h6 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h6><ul>
+<li><p>手动分析漏洞文本描述</p>
+</li>
+<li><p>带trigger的句子具有一定的结构特征，因此用<u>BIOFR</u>进行标记（更适合具有一定结构模式的句子实体，如漏洞描述）</p>
+</li>
+</ul>
+<h6 id="漏洞事件trigger提取"><a href="#漏洞事件trigger提取" class="headerlink" title="漏洞事件trigger提取"></a>漏洞事件trigger提取</h6><ul>
+<li>利用BERT-BiLSTM-CRF模型，其适用于漏洞事件中多个trigger的情况</li>
+<li>输入为漏洞事件，输出为trigger（漏洞事件）类型</li>
+<li>通过FastText对相同类型的trigger进行分组，使得事件抽取准确性更高</li>
+</ul>
+<h6 id="漏洞事件argument提取"><a href="#漏洞事件argument提取" class="headerlink" title="漏洞事件argument提取"></a>漏洞事件argument提取</h6><ul>
+<li>通过BERT问答模型进行trigger的学习，从而更加精确地抽取argument</li>
+<li>即给定指定内容回答相关问题</li>
+</ul>
+<h3 id="实验-Experiment"><a href="#实验-Experiment" class="headerlink" title="实验 Experiment"></a>实验 Experiment</h3><p>暂时跳过</p>
+<h3 id="对认可度的威胁-Threats-to-validity"><a href="#对认可度的威胁-Threats-to-validity" class="headerlink" title="对认可度的威胁 Threats to validity"></a>对认可度的威胁 Threats to validity</h3><ul>
+<li>construct threats 结构威胁：精确度、召回率、F1值</li>
+<li>Internal threats 内部威胁：<ul>
+<li>由于人工标注的主观性和标注策略的限制性，可能会出现少量的标注错误。然而，我们通过计算Cohen ‘ s Kappa系数验证了人工标注数据的有效性，以减少威胁</li>
+<li>在对漏洞事件触发词进行分类时，有些词太短，无法判断其类型。因此，在选择数据集时，我们过滤掉具有相应补丁链接的报告，以辅助判断漏洞原因类型</li>
+<li>trigger数据集中共包含6种trigger类型，但每种类型的漏洞数量不均衡，会导致训练效果下降</li>
+<li>威胁也可以来自于用户向漏洞数据库报告的漏洞描述，而这些在线数据的描述语句往往是有噪声的。我们无法避免源数据报告中的人为错误，这可能会影响我们对漏洞事件提取和分析等方面的识别</li>
+</ul>
+</li>
+<li>External threats 外部威胁：<ul>
+<li>由于需要使用固定代码来辅助识别trigger类型，我们在识别数据集时只筛选出了有相关补丁链接的报告；这就造成了对所涉及项目的局限性，并且这种方法可能并不适用于所有的漏洞报告</li>
+<li>每个漏洞报告的CWE类型是由NVD数据库中的专业人员人工给出的，难免存在一些主观误差</li>
+<li>由于CWE类别数据的不平衡性，RQ4的分类实验结果只有80%左右。此外，较高的CWE类型数量(16种)也是影响分类结果的重要因素</li>
+</ul>
+</li>
+</ul>
+<h3 id="相关工作-Related-work"><a href="#相关工作-Related-work" class="headerlink" title="相关工作 Related work"></a>相关工作 Related work</h3><p>暂时跳过</p>
+<h3 id="结论-Conclusion"><a href="#结论-Conclusion" class="headerlink" title="结论 Conclusion"></a>结论 Conclusion</h3><blockquote>
+<p>本文从事件的角度对漏洞进行分析，并根据漏洞描述的特征进行漏洞事件抽取。在trigger提取方面，我们提出了一种聚焦于触发词相邻语句结构的标注方法BIOFR，然后根据trigger的类型为BERT问答模型构建问题模板来提取漏洞事件argument</p>
+</blockquote>
+
     </div>
 
     
@@ -380,7 +448,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81-Abstract"><span class="nav-number">1.</span> <span class="nav-text">摘要 Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-Introduction"><span class="nav-number">2.</span> <span class="nav-text">介绍 Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E4%B8%8E%E5%8A%A8%E6%9C%BA-Preliminaries-amp-Motivation"><span class="nav-number">3.</span> <span class="nav-text">预备知识与动机 Preliminaries &amp; Motivation</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81-Abstract"><span class="nav-number">1.</span> <span class="nav-text">摘要 Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-Introduction"><span class="nav-number">2.</span> <span class="nav-text">介绍 Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86%E4%B8%8E%E5%8A%A8%E6%9C%BA-Preliminaries-amp-Motivation"><span class="nav-number">3.</span> <span class="nav-text">预备知识与动机 Preliminaries &amp; Motivation</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">问题定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">预训练模型的预备知识</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8A%A8%E6%9C%BA"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">动机</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95-Our-approach"><span class="nav-number">4.</span> <span class="nav-text">方法 Our approach</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#image-20231013211512001-%E6%96%87%E7%8C%AE%E7%AC%94%E8%AE%B0-Automated-event-extraction-of-CVE-descriptions-assets-x2F-image-20231013211512001-png"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">![image-20231013211512001](文献笔记_Automated event extraction of CVE descriptions.assets&#x2F;image-20231013211512001.png)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-number">4.0.0.2.</span> <span class="nav-text">数据预处理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E4%BA%8B%E4%BB%B6trigger%E6%8F%90%E5%8F%96"><span class="nav-number">4.0.0.3.</span> <span class="nav-text">漏洞事件trigger提取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E4%BA%8B%E4%BB%B6argument%E6%8F%90%E5%8F%96"><span class="nav-number">4.0.0.4.</span> <span class="nav-text">漏洞事件argument提取</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C-Experiment"><span class="nav-number">5.</span> <span class="nav-text">实验 Experiment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%AE%A4%E5%8F%AF%E5%BA%A6%E7%9A%84%E5%A8%81%E8%83%81-Threats-to-validity"><span class="nav-number">6.</span> <span class="nav-text">对认可度的威胁 Threats to validity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C-Related-work"><span class="nav-number">7.</span> <span class="nav-text">相关工作 Related work</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA-Conclusion"><span class="nav-number">8.</span> <span class="nav-text">结论 Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
