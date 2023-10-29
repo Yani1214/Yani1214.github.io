@@ -20,17 +20,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="立志成为一名拯救世界的技术宅！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Murphy_42&#39;s BLOG">
-<meta property="og:url" content="http://example.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%8F%8A%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4/index.html">
+  <meta name="description" content="DDoS攻击检测论文——一种基于机器学习的应用层DDoS攻击检测方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DDoS攻击检测论文——一种基于机器学习的应用层DDoS攻击检测方法">
+<meta property="og:url" content="http://example.com/2023/10/27/DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Murphy_42&#39;s BLOG">
-<meta property="og:description" content="立志成为一名拯救世界的技术宅！">
+<meta property="og:description" content="DDoS攻击检测论文——一种基于机器学习的应用层DDoS攻击检测方法">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/pic/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/RF-SVM%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84%E5%9B%BE.png">
+<meta property="og:image" content="http://example.com/pic/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%9C%BA%E5%88%B6%E6%A3%80%E6%B5%8B%E8%8A%82%E7%82%B9%E7%BB%93%E6%9E%84.png">
+<meta property="article:published_time" content="2023-10-27T13:28:45.000Z">
+<meta property="article:modified_time" content="2023-10-28T16:13:02.414Z">
 <meta property="article:author" content="Murphy_42">
+<meta property="article:tag" content="DDoS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/pic/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/RF-SVM%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84%E5%9B%BE.png">
 
-<link rel="canonical" href="http://example.com/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%8F%8A%E9%9A%90%E7%A7%81%E4%BF%9D%E6%8A%A4/">
+<link rel="canonical" href="http://example.com/2023/10/27/DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -38,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分类: 大数据分析及隐私保护 | Murphy_42's BLOG</title>
+  <title>DDoS攻击检测论文——一种基于机器学习的应用层DDoS攻击检测方法 | Murphy_42's BLOG</title>
   
 
 
@@ -157,51 +163,147 @@
         <div class="content-wrap">
           
 
-          <div class="content category">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">大数据分析及隐私保护
-          <small>分类</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/27/DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/Head.jpg">
+      <meta itemprop="name" content="Murphy_42">
+      <meta itemprop="description" content="立志成为一名拯救世界的技术宅！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Murphy_42's BLOG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DDoS攻击检测论文——一种基于机器学习的应用层DDoS攻击检测方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-10-27 21:28:45" itemprop="dateCreated datePublished" datetime="2023-10-27T21:28:45+08:00">2023-10-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-29 00:13:02" itemprop="dateModified" datetime="2023-10-29T00:13:02+08:00">2023-10-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">网络空间安全技术</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF/%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B/" itemprop="url" rel="index"><span itemprop="name">攻击检测</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2023</span>
+        <p>DDoS攻击检测论文——一种基于机器学习的应用层DDoS攻击检测方法</p>
+<span id="more"></span>
+
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><blockquote>
+<p>问题</p>
+</blockquote>
+<ul>
+<li>应用层DDoS攻击形式多样，<strong>特征选取的片面性</strong>使得部分攻击无法被检测到</li>
+<li>现有检测方法<strong>均部署于服务器处</strong>，检测时目标主机已经受到了攻击，从而造成损失</li>
+</ul>
+<blockquote>
+<p>解决方法</p>
+</blockquote>
+<ul>
+<li>通过基于<strong>RF-SVM</strong>的检测模型进行流量分析<ul>
+<li>通过基于<strong>随机森林</strong>的特征重要性评估算法进行特征选择</li>
+</ul>
+</li>
+<li><strong>近攻击源</strong>进行部署DDoS攻击检测系统<ul>
+<li>通过基于 SVM 置信度的<strong>强化学习机制</strong>缓解检测漏报的攻击流量</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>自己提出的思考</p>
+</blockquote>
+<ul>
+<li>强化学习和深度学习的区别？</li>
+</ul>
+<p>——深度学习是通过给定的数据集自主分析特征，并由此得到相应的模型进行数据集之外数据的分析</p>
+<p>——强化学习是在不给定数据集的情况下，预测每种行为的收益，并根据预测结果对高收益的动作进行强化，从而达到自主学习的目的</p>
+<p>——深度学习可以用于做强化学习，即深度学习得到的特征有助于强化学习中的自主学习</p>
+<hr>
+
+<h3 id="基于-RF-SVM-的-DDoS-攻击检测模型"><a href="#基于-RF-SVM-的-DDoS-攻击检测模型" class="headerlink" title="基于 RF-SVM 的 DDoS 攻击检测模型"></a>基于 RF-SVM 的 DDoS 攻击检测模型</h3><blockquote>
+<p>基本思想</p>
+</blockquote>
+<p><img src="/../pic/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/RF-SVM%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84%E5%9B%BE.png" alt="RF-SVM检测模型框架结构图"></p>
+<blockquote>
+<p>模型结构</p>
+</blockquote>
+<p><img src="/../pic/%E4%B8%80%E7%A7%8D%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E6%96%B9%E6%B3%95/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%9C%BA%E5%88%B6%E6%A3%80%E6%B5%8B%E8%8A%82%E7%82%B9%E7%BB%93%E6%9E%84.png" alt="强化学习机制检测节点结构"></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2023-10-09T01:08:50+08:00"
-              content="2023-10-09">
-          10-09
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DDoS/" rel="tag"># DDoS</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2023/10/09/%E5%85%B3%E4%BA%8E%E9%85%8D%E7%BD%AEtensorflow/" itemprop="url">
-            <span itemprop="name">关于配置tensorflow</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/10/26/DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E8%AE%BA%E6%96%87%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84DDoS%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E6%8A%80%E6%9C%AF%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0/" rel="prev" title="DDoS攻击检测论文——基于深度学习的DDoS攻击检测技术研究与实现">
+      <i class="fa fa-chevron-left"></i> DDoS攻击检测论文——基于深度学习的DDoS攻击检测技术研究与实现
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -254,6 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E-RF-SVM-%E7%9A%84-DDoS-%E6%94%BB%E5%87%BB%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">基于 RF-SVM 的 DDoS 攻击检测模型</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
