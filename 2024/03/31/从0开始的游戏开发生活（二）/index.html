@@ -20,20 +20,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="跨站脚本攻击">
+  <meta name="description" content="从0开始的游戏开发生活（二）——C#的第一个程序：”Hello,World!”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XSS攻击">
-<meta property="og:url" content="http://example.com/2023/10/09/XSS%E6%94%BB%E5%87%BB/index.html">
+<meta property="og:title" content="从0开始的游戏开发生活（二）">
+<meta property="og:url" content="http://example.com/2024/03/31/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%94%9F%E6%B4%BB%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
 <meta property="og:site_name" content="Murphy_42&#39;s BLOG">
-<meta property="og:description" content="跨站脚本攻击">
+<meta property="og:description" content="从0开始的游戏开发生活（二）——C#的第一个程序：”Hello,World!”">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-09T11:21:24.000Z">
-<meta property="article:modified_time" content="2023-10-26T07:48:07.430Z">
+<meta property="og:image" content="http://example.com/pic/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%94%9F%E6%B4%BB%EF%BC%88%E4%BA%8C%EF%BC%89/image-20240331235230669.png">
+<meta property="article:published_time" content="2024-03-31T15:15:53.000Z">
+<meta property="article:modified_time" content="2024-03-31T16:17:22.995Z">
 <meta property="article:author" content="Murphy_42">
-<meta property="article:tag" content="XSS">
+<meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/pic/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%94%9F%E6%B4%BB%EF%BC%88%E4%BA%8C%EF%BC%89/image-20240331235230669.png">
 
-<link rel="canonical" href="http://example.com/2023/10/09/XSS%E6%94%BB%E5%87%BB/">
+<link rel="canonical" href="http://example.com/2024/03/31/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%94%9F%E6%B4%BB%EF%BC%88%E4%BA%8C%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -46,7 +48,7 @@
   };
 </script>
 
-  <title>XSS攻击 | Murphy_42's BLOG</title>
+  <title>从0开始的游戏开发生活（二） | Murphy_42's BLOG</title>
   
 
 
@@ -167,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/10/09/XSS%E6%94%BB%E5%87%BB/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/31/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%94%9F%E6%B4%BB%EF%BC%88%E4%BA%8C%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/Head.jpg">
@@ -180,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          XSS攻击
+          从0开始的游戏开发生活（二）
         </h1>
 
         <div class="post-meta">
@@ -190,14 +192,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-10-09 19:21:24" itemprop="dateCreated datePublished" datetime="2023-10-09T19:21:24+08:00">2023-10-09</time>
+              <time title="创建时间：2024-03-31 23:15:53" itemprop="dateCreated datePublished" datetime="2024-03-31T23:15:53+08:00">2024-03-31</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-26 15:48:07" itemprop="dateModified" datetime="2023-10-26T15:48:07+08:00">2023-10-26</time>
+                <time title="修改时间：2024-04-01 00:17:22" itemprop="dateModified" datetime="2024-04-01T00:17:22+08:00">2024-04-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -205,7 +207,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E5%AE%89%E5%85%A8%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">网络空间安全数据挖掘技术</span></a>
+                  <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">游戏开发</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
                 </span>
             </span>
 
@@ -227,63 +233,50 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>跨站脚本攻击</p>
+        <p>从0开始的游戏开发生活（二）——C#的第一个程序：”Hello,World!”</p>
 <span id="more"></span>
 
-<h3 id="XSS基本原理"><a href="#XSS基本原理" class="headerlink" title="XSS基本原理"></a>XSS基本原理</h3><p>恶意代码提交给服务器-&gt;服务器不处理直接传回web</p>
-<h3 id="XSS类型"><a href="#XSS类型" class="headerlink" title="XSS类型"></a>XSS类型</h3><blockquote>
-<p>代码和数据没有分开 合在了一起 从而容易发生XSS攻击，与SQL注入攻击类似（代码和数据拼接）</p>
-<p>因此需要代码和数据分离</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>根据先前总结的游戏设计师攻略，决定先从Unity使用的编程语言C#开始学起。本人在知乎上找到了关于C#比较合理的学习指导方案：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/393040505">C#学习路线指南 - 知乎 (zhihu.com)</a> ，其中提到了一个b站10年前的C#经典教程（ <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1wx411K7rb">https://www.bilibili.com/video/BV1wx411K7rb</a> ），查看最新评论并试听两节课后，觉得该教程没有过时且非常适合本初学者，因此决定对每节课的重点内容进行相应记录。</p>
+<h1 id="C-的第一个程序：”Hello-World-”"><a href="#C-的第一个程序：”Hello-World-”" class="headerlink" title="C#的第一个程序：”Hello,World!”"></a>C#的第一个程序：”Hello,World!”</h1><h2 id="Solution-amp-Project"><a href="#Solution-amp-Project" class="headerlink" title="Solution &amp; Project"></a>Solution &amp; Project</h2><ul>
+<li>solution是针对用户需求提出的解决方案</li>
+<li>solution由若干具体问题组成</li>
+<li>每个具体问题的解决方法对应1个project</li>
+<li>1个solution可对应1到多个project（一对多）</li>
+</ul>
+<h2 id="Project模板"><a href="#Project模板" class="headerlink" title="Project模板"></a>Project模板</h2><ul>
+<li>project通过具体技术解决具体问题</li>
+<li>不同技术对应不同procject模板</li>
+</ul>
+<blockquote>
+<p>模板类型</p>
 </blockquote>
 <ul>
-<li>反射型：输入到web的内容最终会返回到页面中，与恶意url相关，转成短链接地址进行引诱点击</li>
-<li>存储型：论坛等平台中</li>
-<li>DOM型<ul>
-<li>没有输入，信息只会在浏览器端进行处理，代码和数据进行了分离</li>
-<li>可以在网址处进行恶意代码的插入，但是会破坏信息系统的可用性</li>
-<li>无SEO，爬虫只能爬取代码，没有数据</li>
+<li>**Console ** 控制台模板</li>
+<li>WF (Windows Forms) -&gt; <strong>WPF (Windows Presentation Foundation)</strong>  <u>GUI设计模板</u></li>
+<li>ASP.NET WF (Web Forms) -&gt; <strong>ASP.NET MVC (Model-View-Controller)</strong>  <u>web应用模板</u></li>
+<li>Cloud（类似ASP.NET WF）  <u>云平台模板</u></li>
+<li>UWP（类似WPF）  <u>通用应用程序模板</u></li>
+<li>Workflows Fondation  <u>工作流模板</u></li>
+<li>WCF (Windows Communication Foundation)   <u>网络服务模板</u></li>
+</ul>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><img src="/../pic/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%94%9F%E6%B4%BB%EF%BC%88%E4%BA%8C%EF%BC%89/image-20240331235230669.png" alt="image-20240331235230669"></p>
+<ul>
+<li>Scenario：汽车经销商需要一套销售软件</li>
+<li>Solution<ul>
+<li>数据需要存储</li>
+<li>数据需要访问</li>
+<li>需要网站显示网页</li>
+<li>允许什么设备进行访问</li>
+</ul>
+</li>
+<li>Project<ul>
+<li>数据库</li>
+<li>网络服务</li>
+<li>网站搭建</li>
+<li>终端访问</li>
 </ul>
 </li>
 </ul>
-<h3 id="XSS危害"><a href="#XSS危害" class="headerlink" title="XSS危害"></a>XSS危害</h3><ul>
-<li>窃取Cookie，非法获取用户权限</li>
-<li>通过flash，强迫下载恶意软件</li>
-<li>Drive-by-download网马攻击，远程植入木马（要利用浏览器漏洞）</li>
-</ul>
-<h3 id="XSS关注点"><a href="#XSS关注点" class="headerlink" title="XSS关注点"></a>XSS关注点</h3><ul>
-<li>攻击payload如何传输</li>
-<li>攻击payload最终存储位置</li>
-<li>如何找到攻击payload存储位置</li>
-</ul>
-<h3 id="XSS解决方法"><a href="#XSS解决方法" class="headerlink" title="XSS解决方法"></a>XSS解决方法</h3><blockquote>
-<p>对用户的输入进行安全检测</p>
-</blockquote>
-<ul>
-<li>httponly：true则使得攻击者不能通过js的document.cookie获取用户cookie</li>
-<li>CSP：html的前面有csp头，会约定html页面只能加载哪些js，防止攻击者通过上传js恶意代码而进行XSS攻击</li>
-</ul>
-<p><u>PS：不是所有浏览器都支持！</u></p>
-<h3 id="XSS攻击代码"><a href="#XSS攻击代码" class="headerlink" title="XSS攻击代码"></a>XSS攻击代码</h3><ul>
-<li>输入正确值才能使得弹窗消失，其中使用了一些简单数学计算进行混淆</li>
-<li>把script转换为unicode码</li>
-<li>…</li>
-</ul>
-<h3 id="XSS特征"><a href="#XSS特征" class="headerlink" title="XSS特征"></a>XSS特征</h3><ul>
-<li>&lt;&#x2F;&gt;</li>
-<li>script,SCRIPT,Script,javascript,JavaScript</li>
-<li>style,iframe</li>
-<li>97,108,\x60,&amp;#x28</li>
-<li>…</li>
-</ul>
-<h3 id="基于机器学习的XSS检测"><a href="#基于机器学习的XSS检测" class="headerlink" title="基于机器学习的XSS检测"></a>基于机器学习的XSS检测</h3><ul>
-<li>通过XSS常见字符出现次数构建特征向量</li>
-<li>二分类方法</li>
-</ul>
-<h3 id="拓展：安全实验靶场"><a href="#拓展：安全实验靶场" class="headerlink" title="拓展：安全实验靶场"></a>拓展：安全实验靶场</h3><blockquote>
-<p>基于Web应用的靶场<code>DVWA</code>等</p>
-</blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/digininja/DVWA">GitHub - digininja&#x2F;DVWA: Damn Vulnerable Web Application (DVWA)</a></p>
-<p><a target="_blank" rel="noopener" href="http://test.ctf8.com/">XSS平台|CTF欢迎来到XSS挑战|XSS之旅|XSS测试 (ctf8.com)</a></p>
 
     </div>
 
@@ -299,7 +292,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://example.com/2023/10/09/XSS%E6%94%BB%E5%87%BB/" title="XSS攻击">http://example.com/2023/10/09/XSS攻击/</a>
+    <a href="http://example.com/2024/03/31/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%94%9F%E6%B4%BB%EF%BC%88%E4%BA%8C%EF%BC%89/" title="从0开始的游戏开发生活（二）">http://example.com/2024/03/31/从0开始的游戏开发生活（二）/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -310,7 +303,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/XSS/" rel="tag"># XSS</a>
+              <a href="/tags/C/" rel="tag"># C#</a>
           </div>
 
         
@@ -319,13 +312,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/10/09/%E5%85%B3%E4%BA%8E%E9%85%8D%E7%BD%AEtensorflow/" rel="prev" title="关于配置tensorflow">
-      <i class="fa fa-chevron-left"></i> 关于配置tensorflow
+    <a href="/2024/03/30/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%94%9F%E6%B4%BB%EF%BC%88%E4%B8%80%EF%BC%89/" rel="prev" title="从0开始的游戏开发生活（一）">
+      <i class="fa fa-chevron-left"></i> 从0开始的游戏开发生活（一）
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/10/11/Web%E4%B9%8BCSS(1)/" rel="next" title="Web之CSS(1)">
-      Web之CSS(1) <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -384,7 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">XSS基本原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">XSS类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS%E5%8D%B1%E5%AE%B3"><span class="nav-number">3.</span> <span class="nav-text">XSS危害</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS%E5%85%B3%E6%B3%A8%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">XSS关注点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">XSS解决方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS%E6%94%BB%E5%87%BB%E4%BB%A3%E7%A0%81"><span class="nav-number">6.</span> <span class="nav-text">XSS攻击代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS%E7%89%B9%E5%BE%81"><span class="nav-number">7.</span> <span class="nav-text">XSS特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84XSS%E6%A3%80%E6%B5%8B"><span class="nav-number">8.</span> <span class="nav-text">基于机器学习的XSS检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%93%E5%B1%95%EF%BC%9A%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C%E9%9D%B6%E5%9C%BA"><span class="nav-number">9.</span> <span class="nav-text">拓展：安全实验靶场</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%EF%BC%9A%E2%80%9DHello-World-%E2%80%9D"><span class="nav-number">2.</span> <span class="nav-text">C#的第一个程序：”Hello,World!”</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution-amp-Project"><span class="nav-number">2.1.</span> <span class="nav-text">Solution &amp; Project</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.2.</span> <span class="nav-text">Project模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">2.3.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
